@@ -1,4 +1,4 @@
-## !! This is a UNDER DEVELOPMENT project !!
+# !! This is a UNDER DEVELOPMENT project !!
 # Email-Random-XKCD 
 It is a simple PHP application that accepts a visitor’s email address and emails them random XKCD comics every five minutes.
 # Email Verification
