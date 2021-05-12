@@ -1,0 +1,88 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: rgb(255, 255, 255);
+    
+        -ms-transform: scale(1.1, 1.1);
+        -webkit-transform: scale(1.1, 1.1);
+        transform: scale(1.1, 1.1);
+        
+    }
+
+.heading {
+    text-align: center;
+    padding-top: 50px;
+}
+.login-div{
+    color:green;
+    font-size: 11px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 14px;
+    margin-top: 1px;
+    width: 270px;
+    outline: none;
+    text-align: center;
+}
+
+
+div.sign-in-form
+{
+    display: block;
+    text-align: center;
+}
+form
+{
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+i {
+    padding-right: 10px;
+    padding: 8px;
+    margin-top: 2px;
+    margin-left: 2px;
+}
+.button {
+    text-align: center;
+    
+}
+#submit-button {
+    width: 270px;
+    color: rgb(5, 5, 5);
+    background-color: rgb(50, 125, 238);
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+}
+#submit-button:hover{
+    background-color: rgb(38, 58, 240);
+    color: white;
+}
+.input-icons i {
+    position: absolute;
+}
+  
+.input-icons {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    
+}
+.input-field {
+    
+    border: 0.25px thin rgb(32, 31, 31);
+   
+}
+#login-edit {
+    text-decoration: none;
+}
+a:visited {
+    color: rgb(83, 83, 250);
+}
+a:hover {
+    
+    color: rgb(42, 5, 252);
+}
