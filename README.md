@@ -13,3 +13,4 @@ If user wants to close the session he can press Logout button on his currect ses
 This the home page for the user from where he can subscribe to XKCD comics to get a random XKCD image on his mail id at specified time interval(5 mins)
 # 5. Unsubscribe to XKCD comic (Under Development)
 If user wants to stop reveiving mails he can hit unsubscribe button on his homepage to stop reveiving mail.
+ 
