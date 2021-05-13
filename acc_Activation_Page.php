@@ -21,7 +21,7 @@ if (isset($_GET['token']))
     }
     else {
         $_SESSION['message'] = "Sorry! There was a problem activating your account. Please try again.";
-            header('location:Signup_Page.php');
+            header('location:index.php');
         }
     }
 
