@@ -5,7 +5,8 @@ include 'db_connect.php';
 if (isset($_POST['login']))
 {
     $email = $_POST['email'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; 
+    $_SESSION['email'] = $email;
 
     $email_search = " select * from reg where email = '$email' and status='active' ";
     $query = mysqli_query($db_connect, $email_search);
@@ -15,6 +16,7 @@ if (isset($_POST['login']))
         $email_pass = mysqli_fetch_assoc($query);
         $db_pass = $email_pass['password'];
         $_SESSION['name'] =  $email_pass['name'];
+       /*  $_SESSION['email'] =  $email_pass['email']; */
         $pass_decode = password_verify($password, $db_pass);
         if ($pass_decode)
         {
@@ -30,11 +32,9 @@ if (isset($_POST['login']))
                 alert('Wrong credentials! Try again.');
             </script>
             <?php
-            }
-            
+            }    
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -64,10 +64,8 @@ if (isset($_POST['login']))
         <div class="button">
             <button type="submit" name= "login" id="submit-button" > Login </button>
              <p > Don't have an account? <a href="Signup_Page.php" id="login-edit"> Sign Up </p>
-        </div>
-        
+        </div> 
     </form>  
-    
 </div>
 <div style="text-align: center;" > 
         <p class="login-div"> <?php 
