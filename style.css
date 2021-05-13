@@ -93,6 +93,7 @@ i {
     color:white;
     font-weight: bold;
     font-size: 18px;
+    padding-right: 5px;
     }
 .navbar a {
     color: #fff;
@@ -108,5 +109,36 @@ i {
 .navbar a:hover {
     background-color:#353640;
 
+}
+#subscribe {
+    padding: 10px 26px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: rgb(30, 204, 30);
+    border: none;
+    border-radius: 4px;
+}
+#subscribe:hover {
+    background-color: rgb(35, 167, 35);
+}
+#Unsubscribe {
+    padding: 10px 26px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: rgb(247, 26, 26);
+    border: none;
+    border-radius: 4px;
+}
+#Unsubscribe:hover {
+    background-color: rgb(194, 28, 28);
+}
+#SUBS-UNSUBS {
+    display: block;
+}
+#Subs-Unsubs {
+    
+    text-align: center;
+    margin-top: 50px;
+    
 }
 
