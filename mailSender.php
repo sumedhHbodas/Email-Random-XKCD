@@ -1,7 +1,7 @@
 <?php
  require 'vendor/autoload.php';
 
-    class sendEmail {
+    /* class sendEmail {
         public static function sendMail($to, $subject, $content)
         {
             $key = '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';
@@ -21,6 +21,6 @@
             }
 
         }
-    }
+    } */
 
 ?>
