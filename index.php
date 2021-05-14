@@ -41,7 +41,7 @@ if (isset($_POST['submit']))
                 $receipant = $email;
                 $subject = "Email Activation";
                 $body = "Hi, $username. Click this link to activate your account 
-                https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php?token=$token ";
+                http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php?token=$token ";
                 $sender = "From: sumedh281998@gmail.com";
                 
                 if (mail($receipant, $subject, $body, $sender))
@@ -49,6 +49,9 @@ if (isset($_POST['submit']))
                     $_SESSION['message'] = "Please check your email to activate your account $email";
                     header('location:Login_Page.php');
                 } else {
+                    ini_set('display_errors', 1);
+                    ini_set('display_startup_errors', 1);
+                    error_reporting(E_ALL);
                     echo "Email sending failed...";
                 }
             }
