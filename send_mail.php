@@ -12,7 +12,7 @@ if(isset($_POST['subscribe']))
 $to = $_SESSION['email']; 
  
 // Sender 
-$from = 'sumedh281998@gmail.com'; 
+$from = 'shbodas28@gmail.com'; 
 $fromName = 'Sumedh'; 
  
 // Email subject 
