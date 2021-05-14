@@ -50,6 +50,7 @@ if (isset($_POST['submit']))
                     header('location:Login_Page.php');
                 } else {
                     echo "Email sending failed...";
+                    echo $_SESSON['error'];
                 }
             }
             else {
