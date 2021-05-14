@@ -2,6 +2,7 @@
 session_start();
 
 include 'db_connect.php';
+include 'mailSender.php';
 
 if (isset($_POST['submit']))
 {
@@ -38,13 +39,17 @@ if (isset($_POST['submit']))
 
              if ($intoDatabase)
             {
-                $receipant = $email;
+                $to = $email;
                 $subject = "Email Activation";
-                $body = "Hi, $username. Click this link to activate your account 
+                $content = "Hi, $username. Click this link to activate your account 
                 http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php?token=$token ";
                 $sender = "From: shbodas28@gmail.com";
                 
-                if (mail($receipant, $subject, $body, $sender))
+                sendEmail::sendMail($email, $subject, $content);
+                $_SESSION['message'] = "Please check your email to activate your account $email";
+                header('location:Login_Page.php');
+
+                /* if (mail($receipant, $subject, $body, $sender))
                 {
                     $_SESSION['message'] = "Please check your email to activate your account $email";
                     header('location:Login_Page.php');
@@ -53,7 +58,7 @@ if (isset($_POST['submit']))
                     ini_set('display_startup_errors', 1);
                     error_reporting(E_ALL);
                     echo "Email sending failed...";
-                }
+                } */
             }
             else {
                 ?>
