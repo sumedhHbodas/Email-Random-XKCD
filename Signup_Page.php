@@ -41,9 +41,9 @@ if (isset($_POST['submit']))
                 $receipant = $email;
                 $subject = "Email Activation";
                 $body = "Hi, $username. Click this link to activate your account 
-                http://localhost:8080/random%20XKCD/acc_Activation_Page.php?token=$token ";
+                http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php?token=$token ";
                 $sender = "From: sumedh281998@gmail.com";
-                
+                http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php
                 if (mail($receipant, $subject, $body, $sender))
                 {
                     $_SESSION['message'] = "Please check your email to activate your account $email";
