@@ -42,7 +42,7 @@ if (isset($_POST['submit']))
                 $subject = "Email Activation";
                 $body = "Hi, $username. Click this link to activate your account 
                 http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php?token=$token ";
-                $sender = "From: sumedh281998@gmail.com";
+                $sender = "From: shbodas28@gmail.com";
                 
                 if (mail($receipant, $subject, $body, $sender))
                 {
