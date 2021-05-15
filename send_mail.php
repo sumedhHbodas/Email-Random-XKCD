@@ -8,6 +8,14 @@ if(!$_SESSION['name'])
 
 if(isset($_POST['subscribe']))
 {
+    require_once('xkcd_API/xkcd.php');
+        $xkcd = new xkcd();
+        $comic = $xkcd->random(); //get the comic #327, Exploits of a Mom.
+        /* echo '<h1>'.$comic->safe_title.' - xkcd</h1>'; */ //prints the title
+        /* echo "<img src=\"{$comic->img}\" title=\"{$comic->alt}\"/>"; */ //prints the image (don't miss the hover text!)
+        /* echo '<h2>Transcript</h2><pre>'.$comic->transcript.'</pre>';
+        echo "<h2>Full version</h2><a href=\"{$comic->url}\">{$comic->url}</a>"; */
+
     // Recipient 
 $to = $_SESSION['email']; 
  
@@ -17,19 +25,16 @@ $fromName = 'Sumedh';
  
 // Email subject 
 $subject = 'PHP Email with Attachment by Sumedh';  
-
-$JSON_string = '{"month": "5", "num": 2462, "link": "", "year": "2021", "news": "", "safe_title": "NASA Award", "transcript": "", "alt": "The key to discovering life on Mars is to find someone who built a camera and landed it on Mars. Then you just look through the pictures for plants and dogs and stuff.", "img": "https://imgs.xkcd.com/comics/nasa_award.png", "title": "NASA Award", "day": "12"}';
-    $obj = json_decode($JSON_string);
-     
+ 
 // Attachment file 
-$file = $obj->img; 
+$file = $comic->img; 
  
 // Email body content 
 $htmlContent = ' 
     <h3>PHP Email with Attachment</h3> 
     <p>This email is sent from the PHP script with attachment.</p> 
-    <img src="' .$obj->img . '" height="200px" width="200px">
-'; 
+    <img style="max-width:100%; height: auto;" src="' .$comic->img . '" height="300px" width="350px">
+    "<h2>Transcript</h2><pre>'.$comic->transcript.'</pre>" '; 
  
 // Header for sender info 
 $headers = "From: $fromName"." <".$from.">"; 
@@ -100,19 +105,46 @@ else {
     <ul>
     <li id="username-edit">
     <?php
-        echo "Welcome, " . $_SESSION['name'] ;
+        echo "Welcome, " . $_SESSION['name'],"!" ;
     ?>  
     </li>
     <li> <a href= "Logout_Page.php"  >  Logout </a>  </li>
     <ul>
     </div>
-    <h1 style="text-align: center"> Welcome to XKCD comic world! </h1>
+    <h1 style="text-align: center; "> Welcome to XKCD comic world! </h1>
+    <h4 style="text-align: center; "> Please click on "RANDOM" to see a random comic image </h4>
     
     <form method="post" action="" id="SUBS-UNSUBS">
+    <div id="random-arrange">
+        <button type="submit" name="random" id="random"> Random</button>
+    </div>
+    <div id="xkcd">
+        <?php
+        if(isset($_POST['random']))
+        {
+            require_once('xkcd_API/xkcd.php');
+        $xkcd = new xkcd();
+        $comic = $xkcd->random(); //get the comic #327, Exploits of a Mom.
+        /* echo '<h1>'.$comic->safe_title.' - xkcd</h1>'; */ //prints the title
+        echo '<img style="max-width:100%; height: auto;" src="' .$comic->img . '" height="300px" width="350px">' ;
+         //prints the image (don't miss the hover text!)
+        
+        /* echo '<h2>Transcript</h2><pre>'.$comic->transcript.'</pre>';
+        echo "<h2>Full version</h2><a href=\"{$comic->url}\">{$comic->url}</a>"; */
+        }
+        ?>
+        </div>
+        <h4 style="text-align: center; "> Wanna explore more such awesome comic images? Why wait! consider subscribing. It's FREE!! </h4>
+        <h4 style="text-align: center; "> Hit the subscribe button below. </h4>
     <div id="Subs-Unsubs">
         <button type="submit" name="subscribe" id="subscribe"> Subscribe</button>
         <button type="submit" name="Unsubscribe" id="Unsubscribe"> Unsubscribe </button>
     </div>
+    <div class="instruction">
+    <p > *You will receive an image along with it's content after every 5 minutes. </p>
+    <p> *You can always unsubscribe to this by clicking the link in your email. We won't bother you further :( </p>
+    </div>
+
     </form>
 </body>
 </html>
