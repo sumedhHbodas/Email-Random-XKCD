@@ -2,6 +2,7 @@
 session_start();
 include 'db_connect.php';
 
+echo "account activation";
 if (isset($_GET['token']))
 {
     $token = $_GET['token'];
