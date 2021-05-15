@@ -77,10 +77,11 @@ i {
 #send_mail_body {
     margin: 0px;
     padding: 0px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 .navbar ul {
     list-style: none;
-    background: rgb(204, 50, 50);
+    background: rgb(56, 71, 209);
     padding: 0;
     margin: 0;
     text-align: right;
@@ -107,7 +108,7 @@ i {
     text-align: center;
 }
 .navbar a:hover {
-    background-color:#353640;
+    background-color:#0c1685;
 
 }
 #subscribe {
@@ -138,7 +139,40 @@ i {
 #Subs-Unsubs {
     
     text-align: center;
-    margin-top: 50px;
+    margin-top: 40px;
+    margin-bottom: 50px;
     
 }
+#random-arrange {
+    text-align: center;
+}
+#random {
+    background: rgb(115, 117, 247);
+    color:white;
+    padding: 8px 16px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 3px; margin-bottom: 14px;
+    padding-bottom: 4px;
+    text-align: center;
+}
+#xkcd {
+    text-align: center;
+}
+#title {
+    text-align: center;
+}
+#title1 {
+    font-size:50px;
+    margin-right: 30px;
 
+}
+#title2 {
+    margin-left: 40px;
+}
+.instruction{
+    color: rgb(18, 128, 18);
+    font-size:11px;
+    margin-left: 10px;
+}
