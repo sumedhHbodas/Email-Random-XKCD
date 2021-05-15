@@ -53,7 +53,12 @@ if (isset($_POST['submit']))
                 if (mail($to, $subject, $content, $sender))
                 {
                     $_SESSION['message'] = "Please check your email to activate your account $email";
-                    header('location:Login_Page.php');
+                    ?>
+                    <script>
+                        location.replace("Login_Page.php");
+                    </script>
+                    <?php
+                    /* header('location:Login_Page.php'); */
                 } else {
                     ini_set('display_errors', 1);
                     ini_set('display_startup_errors', 1);
