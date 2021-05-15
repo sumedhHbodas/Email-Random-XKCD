@@ -38,19 +38,33 @@ if (isset($_POST['submit']))
              $intoDatabase = mysqli_query($db_connect, $insertQuery);
 
              if ($intoDatabase)
-            {
+            {/* 
                 $to = $email;
                 $subject = "Email Activation";
                 $content = "Hi, $username. Click this link to activate your account 
                 http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php?token=$token ";
-                $sender = "From: shbodas28@gmail.com";
+                https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php
+                $sender = "From: shbodas28@gmail.com"; */
                 
                 //sendgrid API call
                 /* sendEmail::sendMail($email, $subject, $content);
                 $_SESSION['message'] = "Please check your email to activate your account $email";
-                header('location:Login_Page.php');
- */
-                if (mail($to, $subject, $content, $sender))
+                header('location:Login_Page.php'); */
+                require 'vendor/autoload.php';
+                
+                $key = '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';
+                $email = new \SendGrid\Mail\Mail();
+                $email->setFrom("shbodas28@gmail.com", "Sumedh");
+                $email->setSubject("Email Activation");
+                $email->addTo("sumedh.bodas17@vit.edu", "Example User");
+                $email->addContent("text/plain", "Hi, $username. Click this link to activate your account 
+                https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php?token=$token ");
+               /*  $email->addContent("text/html", "<strong>and easy to do anywhere, even with PHP</strong>"); */
+
+                $sendgrid = new \SendGrid($key);
+
+
+                if ($sendgrid->send($email))
                 {
                     $_SESSION['message'] = "Please check your email to activate your account $email";
                     ?>
