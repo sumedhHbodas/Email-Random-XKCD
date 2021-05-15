@@ -147,12 +147,12 @@ i {
     text-align: center;
 }
 #random {
-    background: rgb(115, 117, 247);
+    background: #6E7B91;
     color:white;
     padding: 8px 16px;
     text-transform: uppercase;
-    font-weight: bold;
-    border: none;
+    font-weight: 600;
+    border: 1.5px solid #333;
     border-radius: 3px; margin-bottom: 14px;
     padding-bottom: 4px;
     text-align: center;
