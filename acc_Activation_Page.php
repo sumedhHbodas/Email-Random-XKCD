@@ -13,16 +13,33 @@ if (isset($_GET['token']))
         if(isset($_SESSION['message']))
         {
             $_SESSION['message'] = "Account activated successfully!";
-            header('location:Login_Page.php');
+            ?>
+            <script>
+                window.location = "https://email-random-xkcd.herokuapp.com/Login_page.php";
+                
+            </script>
+            <?php   
         }
         else {
             $_SESSION['message'] = "You are logged out";
-            header('location:Login_Page.php');
+            ?>
+            <script>
+               window.location = "https://email-random-xkcd.herokuapp.com/Login_page.php";
+                                  
+            </script>
+            <?php
+            
+            
         }
     }
     else {
         $_SESSION['message'] = "Sorry! There was a problem activating your account. Please try again.";
-            header('location:index.php');
+        ?>
+            <script>
+               window.location = "https://email-random-xkcd.herokuapp.com/index.php";
+            </script>
+            <?php
+            
         }
     }
 
