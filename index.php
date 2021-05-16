@@ -36,7 +36,7 @@ if (isset($_POST['submit']))
              values ('$username', '$email', '$mobile_number', '$pass', '$confirm_pass', '$token', 'inactive')";
 
              $intoDatabase = mysqli_query($db_connect, $insertQuery);
-             $key = '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';
+             $key = 'API_KEY';
 
              if ($intoDatabase)
             {/* 
