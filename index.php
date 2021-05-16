@@ -11,6 +11,7 @@ if (isset($_POST['submit']))
     $mobile_number = mysqli_real_escape_string ($db_connect, $_POST['mobile_number']);
     $password = mysqli_real_escape_string ($db_connect, $_POST['password']);
     $confirm_password = mysqli_real_escape_string ($db_connect, $_POST['confirm_password']);
+    
 
     $pass = password_hash($password, PASSWORD_BCRYPT);
     $confirm_pass = password_hash($confirm_password, PASSWORD_BCRYPT);
@@ -19,6 +20,8 @@ if (isset($_POST['submit']))
     $emailQuery = "select * from reg where email = '$email'";
     $query = mysqli_query($db_connect, $emailQuery);
     $emailCount = mysqli_num_rows($query);
+    $_SESSION['email'] = $email;
+    $_SESSION['message'] = "Please check your email to activate your account $email";
 
     if ($emailCount > 0)
     {
@@ -36,40 +39,28 @@ if (isset($_POST['submit']))
              values ('$username', '$email', '$mobile_number', '$pass', '$confirm_pass', '$token', 'inactive')";
 
              $intoDatabase = mysqli_query($db_connect, $insertQuery);
-             $key = 'API_KEY';
+             
 
              if ($intoDatabase)
-            {/* 
-                $to = $email;
-                $subject = "Email Activation";
-                $content = "Hi, $username. Click this link to activate your account 
-                http://localhost:8080/Email-Random-XKCD/acc_Activation_Page.php?token=$token ";
-                https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php
-                $sender = "From: shbodas28@gmail.com"; */
-                
-                //sendgrid API call
-                /* sendEmail::sendMail($email, $subject, $content);
-                $_SESSION['message'] = "Please check your email to activate your account $email";
-                header('location:Login_Page.php'); */
+            {
                 require 'vendor/autoload.php';
-                
-                
+
+                // $key = 'API_KEY';  API_KEY hidden due to security issues. This can be uncommented to make it work
                 $email = new \SendGrid\Mail\Mail();
-                $email->setFrom("shbodas28@gmail.com", "Sumedh");
-                $email->setSubject("Email Activation");
-                $email->addTo("sumedh.bodas17@vit.edu", "Example User");
-                $email->addContent("text/plain", "Hi, $username. Click this link to activate your account https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php?token=$token ");
-               /*  $email->addContent("text/html", "<strong>and easy to do anywhere, even with PHP</strong>"); */
-
-                $sendgrid = new \SendGrid($key);
-
-
+               $email->setFrom("sumedhb28@outlook.com", "Sumedh");
+               $email->setSubject("Account activation");
+               $email->addTo($_SESSION['email'], "Example User");
+               $email->addContent("text/plain", "Hi, $username. Click this link to activate your account https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php?token=$token");
+               
+               $sendgrid = new \SendGrid($key);
+               
                 if ($sendgrid->send($email))
                 {
-                    $_SESSION['message'] = "Please check your email to activate your account $email";
+                   // $_SESSION['message'] = "Please check your email to activate your account $email";
+                   echo $_SESSION['message'];
                     ?>
                     <script>
-                        location.replace("Login_Page.php");
+                        window.location = "https://email-random-xkcd.herokuapp.com/Login_page.php";
                     </script>
                     <?php
                     /* header('location:Login_Page.php'); */
@@ -109,7 +100,7 @@ if (isset($_POST['submit']))
 <body>
     <div id="container">
     <div class="sign-in-form">
-    <form  method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+    <form  method="POST" action="">
         <div class="heading">
             <h2> Create an account </h2>
             <h4> Get started with your account </h4>  
