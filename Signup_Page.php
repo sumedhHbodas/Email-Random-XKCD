@@ -82,7 +82,7 @@ if (isset($_POST['submit']))
 <body>
     <div id="container">
     <div class="sign-in-form">
-    <form  method="POST" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
+    <form  method="POST" action="Login_page.php">
         <div class="heading">
             <h2> Create an account </h2>
             <h4> Get started with your account </h4>  
