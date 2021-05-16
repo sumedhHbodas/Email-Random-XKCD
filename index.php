@@ -36,6 +36,7 @@ if (isset($_POST['submit']))
              values ('$username', '$email', '$mobile_number', '$pass', '$confirm_pass', '$token', 'inactive')";
 
              $intoDatabase = mysqli_query($db_connect, $insertQuery);
+             $key = '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';
 
              if ($intoDatabase)
             {/* 
@@ -52,13 +53,12 @@ if (isset($_POST['submit']))
                 header('location:Login_Page.php'); */
                 require 'vendor/autoload.php';
                 
-                $key = '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';
+                
                 $email = new \SendGrid\Mail\Mail();
                 $email->setFrom("shbodas28@gmail.com", "Sumedh");
                 $email->setSubject("Email Activation");
                 $email->addTo("sumedh.bodas17@vit.edu", "Example User");
-                $email->addContent("text/plain", "Hi, $username. Click this link to activate your account 
-                https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php?token=$token ");
+                $email->addContent("text/plain", "Hi, $username. Click this link to activate your account https://email-random-xkcd.herokuapp.com/acc_Activation_Page.php?token=$token ");
                /*  $email->addContent("text/html", "<strong>and easy to do anywhere, even with PHP</strong>"); */
 
                 $sendgrid = new \SendGrid($key);
