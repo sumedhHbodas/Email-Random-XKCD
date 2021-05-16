@@ -8,6 +8,7 @@ if (isset($_POST['login']))
     $email = $_POST['email'];
     $password = $_POST['password']; 
     $_SESSION['email'] = $email;
+    
 
     $email_search = " select * from reg where email = '$email' and status='active' ";
     $query = mysqli_query($db_connect, $email_search);
@@ -23,7 +24,7 @@ if (isset($_POST['login']))
         {
             ?>
             <script>
-                location.replace("send_mail.php");
+                window.location = "https://email-random-xkcd.herokuapp.com/send_mail.php";
             </script>
             <?php
         }
@@ -75,7 +76,7 @@ if (isset($_POST['login']))
             echo $_SESSION['message'];
         }
         else {
-            echo $_SESSION['message'] = "You are logged out. Please login again.";
+            echo $_SESSION['message'] = "Please login again.";
         }
         
          ?> </p>
