@@ -1,9 +1,15 @@
+
 <?php
 session_start();
-
+require 'vendor/autoload.php';
 if(!$_SESSION['name'])
 {
-    header('location: Login_page.php');
+    ?>
+    <script>
+         window.location = "https://email-random-xkcd.herokuapp.com/Login_Page.php";
+         </script>
+    <?php
+    
 }
 
 if(isset($_POST['subscribe']))
@@ -16,7 +22,7 @@ if(isset($_POST['subscribe']))
         /* echo '<h2>Transcript</h2><pre>'.$comic->transcript.'</pre>';
         echo "<h2>Full version</h2><a href=\"{$comic->url}\">{$comic->url}</a>"; */
 
-    // Recipient 
+    /* // Recipient 
 $to = $_SESSION['email']; 
  
 // Sender 
@@ -70,23 +76,54 @@ $returnpath = "-f" . $from;
  
 // Send email 
 $mail = @mail($to, $subject, $message, $headers, $returnpath);  
- 
-if ($mail) 
-{
-    ?>
-    <script>
-        location.replace("Subscribe.php");
-    </script>
-    <?php
-}
-else {
-    ?>
-    <script>
-       alert("something went wrong");
-    </script>
-    <?php
-}
 
+if ($mail)
+        {
+            ?>
+            <script>
+                window.location = "https://email-random-xkcd.herokuapp.com/Subscribe.php";
+            </script>
+            <?php
+        }
+        else {
+            ?>
+            <script>
+               alert("something went wrong");
+            </script>
+            <?php
+        } */
+ 
+  
+        $htmlContent = ' 
+        <h3>PHP Email with Attachment</h3> 
+        <p>This email is sent from the PHP script with attachment.</p> 
+        <img style="max-width:100%; height: auto;" src="' .$comic->img . '" height="300px" width="350px">
+        "<h2>Transcript</h2><pre>'.$comic->transcript.'</pre>" '; 
+
+        //$key = 'API_KEY';  // Hidden due to security issues
+        $email = new \SendGrid\Mail\Mail();
+        $email->setFrom("sumedhb28@outlook.com", "Sumedh");
+        $email->setSubject("XKCD comic Subscription");
+        $email->addTo($_SESSION['email']);
+        $email->addContent("text/html", $htmlContent);
+               
+        $sendgrid = new \SendGrid($key);
+
+        if ($sendgrid->send($email))
+        {
+            ?>
+            <script>
+                window.location = "https://email-random-xkcd.herokuapp.com/Subscribe.php";
+            </script>
+            <?php
+        }
+        else {
+            ?>
+            <script>
+               alert("something went wrong");
+            </script>
+            <?php
+        }
 }
 ?>
 
